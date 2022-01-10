@@ -1,0 +1,12 @@
+*.iml
+.gradle
+.idea
+local.properties
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.gradle/7.0.2/executionHistory/
+.gradle/7.0.2/fileHashes/
+.gradle/7.0.2/javaCompile/
+.gradle/buildOutputCleanup/
