@@ -2,6 +2,7 @@ package com.example.helloword;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -14,5 +15,9 @@ public class anotherActivity extends AppCompatActivity {
         setContentView(R.layout.activity_another);
 
         Log.d(TAG, "onCreate: ");
+
+        Intent intent = getIntent();
+        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+        setTitle(message);
     }
 }

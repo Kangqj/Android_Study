@@ -2,6 +2,7 @@ package com.example.helloword;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
@@ -29,7 +30,6 @@ import Broadcast.NormalReceiver;
 
 public class MainActivity extends AppCompatActivity {
     public static  final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
-    private static final String LARGE_BASE_URL = "https://storage.googleapis.com/androiddevelopers/sample_data/activity_transition/large/flying_in_the_light.jpg";
     private static final String NORMAL_ACTION = "com.example.normal.receiver";
     NormalReceiver receiver;
 
@@ -52,13 +52,21 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
         */
 
+        final List<String> nameList = new ArrayList<String>();
+        nameList.add("Activity");
+        nameList.add("Service");
+        nameList.add("BroadCast");
+        nameList.add("contentProvider");
+        nameList.add("UIControl");
+
         //加载自定义数据
         ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < nameList.size(); i++) {
             Map<String, Object> map = new HashMap<String, Object>();
-            map.put("title", "第" + i + "title");
-            map.put("info", "第" + i + "info");
+            String name = nameList.get(i);
+            map.put("title", name);
+            map.put("info", name + "学习记录");
             map.put("img", R.drawable.header);
             list.add(map);
         }
@@ -69,10 +77,36 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Map result = list.get(position);
-                System.out.println("你点击了" + result.get("title") + result.get("info"));
-                goToNextActivity(result.get("title").toString());
-
-                sendBroadcast(result.get("title").toString());
+                switch (position)
+                {
+                    case 0:
+                    {
+                        goToNextActivity(result.get("title").toString());
+                        break;
+                    }
+                    case 1:
+                    {
+                        goToNextActivity(result.get("title").toString());
+                        break;
+                    }
+                    case 2:
+                    {
+                        sendBroadcast(result.get("title").toString());
+                        break;
+                    }
+                    case 3:
+                    {
+                        goToControlAC(result);
+                        break;
+                    }
+                    case 4:
+                    {
+                        goToControlAC(result);
+                        break;
+                    }
+                    default:
+                        break;
+                }
             }
         });
     }
@@ -90,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause(){
         super.onPause();
-//        unregisterReceiver(receiver);
+        unregisterReceiver(receiver);
     }
 
     public void sendBroadcast(String msg) {
@@ -105,16 +139,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void sendMessage(View view) {
-        Intent intent = new Intent(this, DisplayMessageActivity.class);
-        EditText editText = (EditText) findViewById(R.id.editTextTextPersonName);
-        String message = editText.getText().toString();
-        Intent intent1 = intent.putExtra(EXTRA_MESSAGE, message);
+    public void goToControlAC(Map map) {
+        Intent intent = new Intent(this, UIControlActivity.class);
+        Intent intent1 = intent.putExtra(EXTRA_MESSAGE, map.get("title").toString());
         startActivity(intent);
-    }
-
-    public void loadImage(View view) {
-        ImageView image = (ImageView) findViewById(R.id.imageView);
-        Picasso.with(image.getContext()).load(LARGE_BASE_URL).into(image);
     }
 }

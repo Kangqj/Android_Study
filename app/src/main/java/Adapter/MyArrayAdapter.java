@@ -56,7 +56,9 @@ public class MyArrayAdapter extends ArrayAdapter {
         }
 
         Map map = mItems.get(position);
-        holder.titleView.setText(map.get("title").toString());
+
+        String title = position + 1 + "." + map.get("title").toString();
+        holder.titleView.setText(title);
         holder.infoView.setText(map.get("info").toString());
         holder.imgView.setImageResource((Integer) map.get("img"));
 
