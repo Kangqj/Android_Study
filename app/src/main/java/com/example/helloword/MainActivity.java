@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         nameList.add("BroadCast");
         nameList.add("contentProvider");
         nameList.add("UIControl");
+        nameList.add("Fragment");
 
         //加载自定义数据
         ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();

@@ -7,10 +7,11 @@
         <entry key="../../Library/Android/sdk/platforms/android-31/data/res/layout/simple_list_item_1.xml" value="0.1328125" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.23055555555555557" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.23055555555555557" />
-        <entry key="app/src/main/res/layout/activity_another.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_another.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_display_message.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_uicontrol.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fruit_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item.xml" value="0.1828125" />
       </map>
     </option>
